@@ -1,0 +1,17 @@
+﻿insert into cars(Brand,Model,Color,Year)
+values          ('Seat','Ateca','Blue',2016),
+                ('Toyota', 'Corolla', 'White', 2018),
+                ('Honda', 'Civic', 'Black', 2020),
+                 ('Ford', 'Focus', 'Red', 2017),
+                 ('Chevrolet', 'Malibu', 'Silver', 2019),
+               ('BMW', 'X5', 'Blue', 2021),
+              ('Mercedes-Benz', 'C-Class', 'Gray', 2016),
+                    ('Audi', 'A4', 'Black', 2018),
+                  ('Volkswagen', 'Passat', 'White', 2017),
+                 ('Nissan', 'Altima', 'Red', 2020),
+                ('Hyundai', 'Tucson', 'Silver', 2019),
+               ('Kia', 'Sportage', 'Blue', 2021),
+                     ('Mazda', 'CX-5', 'Gray', 2018),
+                 ('Subaru', 'Outback', 'Green', 2022),
+              ('Tesla', 'Model 3', 'White', 2023),
+               ('Jeep', 'Wrangler', 'Black', 2015);
