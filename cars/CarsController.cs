@@ -41,6 +41,32 @@ namespace Cars_Web.cars
 
         }
 
+
+        [HttpPost("create")]
+
+        public  async Task<ActionResult<CarResponse>> CreateCArAsync(CarRequest create)
+        {
+            try
+            {
+                CarResponse response = await this._command.CreateAsync(create);
+
+                return Accepted("", response);
+
+
+            }catch(CarArlreadyExistException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+
+
+
+
+
+        }
+
+
+
         [HttpDelete("delete/{id}")]
 
         public async Task<ActionResult<CarResponse>> DeleteCarAsync([FromRoute] int id)

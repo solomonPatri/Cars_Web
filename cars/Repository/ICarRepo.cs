@@ -23,10 +23,8 @@ namespace Cars_Web.cars.Repository
         Task<GetAllBrand> GetAllBrandsAsync();
 
 
-        Task<CarResponse> FindBrandNameAsync(string name);
-
-
-
+        Task<CarResponse?> FindBrandNameAsync(CarRequest car);
+        Task<CarResponse> FindByBrandCarASync(string brand);
 
 
 

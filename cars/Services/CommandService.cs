@@ -23,7 +23,7 @@ namespace Cars_Web.cars.Services
 
        public async  Task<CarResponse> CreateAsync(CarRequest create)
         {
-            CarResponse carexist = await this._repo.FindBrandNameAsync(create.Brand);
+            CarResponse carexist = await this._repo.FindBrandNameAsync(create);
 
             if(carexist == null)
             {

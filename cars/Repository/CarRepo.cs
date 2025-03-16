@@ -1,10 +1,9 @@
-﻿using AutoMapper;
-using Cars_Web.cars.Dtos;
+﻿using Cars_Web.cars.model;
+using Cars_Web.cars.Repository;
 using Cars_Web.data;
-using Cars_Web.cars.model;
-using System.Data.Entity;
-using System.Runtime.CompilerServices;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Cars_Web.cars.Dtos;
+using AutoMapper;
 
 namespace Cars_Web.cars.Repository
 {
@@ -26,8 +25,8 @@ namespace Cars_Web.cars.Repository
 
             var cars = data.Select(m => _mapper.Map<CarResponse>(m)).ToList();
 
-            GetAllCarsDto response = _mapper.Map<GetAllCarsDto>(cars);
-
+            GetAllCarsDto response = new GetAllCarsDto();
+            response.Carslist = cars;
             return response;
 
 
@@ -146,22 +145,37 @@ namespace Cars_Web.cars.Repository
 
         }
 
-
-
-        public async  Task<CarResponse> FindBrandNameAsync(string brand)
+        public async  Task<CarResponse?> FindBrandNameAsync(CarRequest car)
         {
-            Car searched = await _appDbContext.Cars.FirstOrDefaultAsync(m=>m.Brand.Equals(brand));
+            var entity = await _appDbContext.Cars
+                .Where(m => m.Brand == car.Brand
+                       && m.Model != car.Model
+                       && m.Color != car.Color
+                       && m.Year != car.Year)
+                .FirstOrDefaultAsync();
 
-            CarResponse response = _mapper.Map<CarResponse>(searched);
-            return response;
+            if (entity == null)
+            {
 
+                return null;
+            }
 
+            return _mapper.Map<CarResponse>(entity);
 
 
 
 
         }
 
+      public async Task<CarResponse> FindByBrandCarASync(string brand)
+        {
+            Car s = await _appDbContext.Cars.FirstOrDefaultAsync(m => m.Brand.Equals(brand));
+
+            CarResponse response = _mapper.Map<CarResponse>(s);
+            return response; 
+
+
+        }
 
 
 

@@ -1,7 +1,8 @@
 ﻿using Cars_Web.cars.Dtos;
+using Cars_Web.cars.model;
 using Cars_Web.cars.Repository;
 using Cars_Web.cars.Exceptions;
-
+using Microsoft.AspNetCore.Server.IIS.Core;
 namespace Cars_Web.cars.Services
 {
     public class QueryService:IQueryService
@@ -39,9 +40,6 @@ namespace Cars_Web.cars.Services
 
             }
             throw new CarNotFoundException();
-
-
-
 
 
         }

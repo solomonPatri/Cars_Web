@@ -10,12 +10,11 @@ namespace Cars_Web.cars.Mappers
 
         public CarMappingProfile()
         {
-            CreateMap<CarResponse, Car>();
-            CreateMap<Car, CarRequest>();
+            CreateMap<CarRequest, Car>();
+            CreateMap<Car, CarResponse>();
             CreateMap<CarResponse, CarUpdateRequest>();
-            CreateMap<CarResponse, GetAllCarsDto>();
-            
-
+            CreateMap<CarRequest, CarResponse>();
+            CreateMap<GetAllCarsDto, CarRequest>();
 
 
 
